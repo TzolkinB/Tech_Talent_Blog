@@ -1,0 +1,26 @@
+/* @import "bootstrap-sprockets";
+@ */
+
+body {
+	background-color: #d9c1f6;	
+}
+
+.container {
+	background-color: rgba(255,255,255,0.8);
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+
+.panel-transparent {
+	background: none;
+}
+
+.panel-transparent .panel-body{
+	background: rgba(255,255,255,0.7);	
+}
+
+.cant-see-me {
+	display: none;
+}
