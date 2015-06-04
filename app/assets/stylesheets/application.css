@@ -1,8 +1,30 @@
 /* @import "bootstrap-sprockets";
 @ */
+.navbar-default {
+	background: transparent;
+}
+
+.navbar-collapse li:hover {
+		color: white;
+    background-color: #CC5500;
+}
 
 body {
-	background-color: #d9c1f6;	
+background-image: url("http://juliewight.com/wp-content/uploads/2014/01/free-fall-wallpaper-desktop.jpg");
+  background-size: 100% 100%;	
+}
+
+h1 {
+	font-family: 'Play', sans-serif; 	
+}
+
+.blog_post {
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 1.5em;
+}
+
+.pull-right {
+	padding:2%;
 }
 
 .container {

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :blog_posts
 	
 	root 'blog_posts#index' # controller hash action/method, blog_post controller# index method
+	
+	get 'your_posts' => 'blog_posts#your_posts'
+	get 'user_posts' => 'blog_posts#user_posts'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

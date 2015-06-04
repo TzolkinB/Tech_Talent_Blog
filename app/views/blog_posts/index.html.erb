@@ -1,31 +1,46 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/blog_posts.css.scss">
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light|Play' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<h1>Current Blog Posts</h1>
+	<h1>Where Dreams Come True</h1>
 
 <div class="row">
 	<% @blog_posts.each do |blog_post| %>
 		<div class="col-md-6">
 			<div class="panel panel-success">
-			<div class="panel-heading">
-				<%= link_to blog_post.title, blog_post %>
-			</div>
+				<div class="panel-heading">
+					<%= link_to blog_post.title, blog_post %>
+				</div>
 			
-			<div class ="panel-body">
-				by <%= blog_post.user.username %><br />
-				<p><span class ="posted-at"> posted at: <%= blog_post.created_at.strftime('%m/%d/%Y at %H:%M:%S') %></span></p>
-				<p><%= blog_post.blog_entry[0..250]%>...[<%= link_to "Read More", blog_post %>]</p>
-			</div>
+				<div class ="panel-body">
+					by <%= link_to blog_post.user.username %><br />
+					<p><span class ="posted-at"> written <%= blog_post.created_at.strftime('%m/%d/%Y at %H:%M:%S') %></span></p>
+					<div class="blog_post">
+					<p><%= blog_post.blog_entry[0..250]%>...[<%= link_to "Read More", blog_post %>]</p>
+					</div>
+				</div>
 				
-			<div class="panel-footer">
+				<div class="panel-footer index-blog-footer">
+					<% if current_user.id == blog_post.user.id %>
 <!--			<%= link_to 'Show', blog_post, class: "btn btn-primary" %> -->
-				<%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
-				<%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are You Sure?' }, class: "btn btn-danger" %>
-			</div>
-			</div>
+					<%= link_to edit_blog_post_path(blog_post) do %>
+					<button class="btn btn-warning"><i class="fa fa-pencil"></i> Edit </button>
+					<% end %>
+					<%= link_to blog_post, method: :delete, data: { confirm: 'Are You Sure?' } do %>
+					<button class="btn btn-danger" %><i class="fa fa-trash-o"></i> Delete </button>
+					<% end %>
+					<% else %>
+						<div class="ptop-5">
+						<%= link_to user_posts_path(id: blog_post.user.id) do %>
+						<i class="fa fa-eye"></i> Read More Posts by <%= blog_post.user.username %>
+						<% end %>
+						</div>
+						<% end %>
+				</div> <!-- panel footer -->
+		</div>
 	</div>
-	<% end %>
+<% end %>
 </div>
 
 <br>

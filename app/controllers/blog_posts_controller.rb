@@ -6,6 +6,14 @@ class BlogPostsController < ApplicationController
   def index
 		@blog_posts = BlogPost.all #index of all blog posts in our database
   end
+	
+	def your_posts
+		@blog_posts = BlogPost.where(user_id: current_user.id)
+	end
+	
+	def user_posts
+		@user = User.find(params[:id])
+	end
 
   # GET /blog_posts/1
   # GET /blog_posts/1.json
@@ -65,7 +73,7 @@ class BlogPostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog_post
-      @blog_post = BlogPost.find(params[:id])
+			@blog_post = BlogPost.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
